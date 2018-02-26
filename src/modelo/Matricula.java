@@ -4,27 +4,30 @@ import java.util.Date;
 
 public class Matricula {
 	
-	private int idAlumno;
-	private int idAsignatura;
+	private Alumno alumno;
+	private Asignatura asignatura;
 	private Date fecha;
+	
+
 	
 	
 	//getters and setters
 	
-	public int getIdAlumno() {
-		return idAlumno;
-	}
-	public void setIdAlumno(int idAlumno) {
-		this.idAlumno = idAlumno;
-	}
-	public int getIdAsignatura() {
-		return idAsignatura;
-	}
-	public void setIdAsignatura(int idAsignatura) {
-		this.idAsignatura = idAsignatura;
-	}
+
 	public Date getFecha() {
 		return fecha;
+	}
+	public Alumno getAlumno() {
+		return alumno;
+	}
+	public void setAlumno(Alumno alumno) {
+		this.alumno = alumno;
+	}
+	public Asignatura getAsignatura() {
+		return asignatura;
+	}
+	public void setAsignatura(Asignatura asignatura) {
+		this.asignatura = asignatura;
 	}
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;

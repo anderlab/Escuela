@@ -121,5 +121,33 @@ public class AsignaturaModelo extends Conector {
 			e.printStackTrace();
 		}
 	}
+	
+	public Asignatura getAsignatura(int id_asignatura){
+		
+		PreparedStatement pst;
+		try {
+			pst = super.conexion.prepareStatement("select * from asignaturas where id=?");
+			pst.setInt(1, id_asignatura);
+			ResultSet rs = pst.executeQuery();
+			
+			while (rs.next()){
+				Asignatura asignatura = new Asignatura();
+				asignatura.setId(rs.getInt("id"));
+				asignatura.setNombre(rs.getString("nombre"));
+				asignatura.setHoras(rs.getInt("horas"));
+				
+				return asignatura;
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+		
+		
+		
+		
+	}
 
 }

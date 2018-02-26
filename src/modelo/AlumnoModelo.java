@@ -133,6 +133,7 @@ public class AlumnoModelo extends Conector {
 	public ArrayList<Alumno> selectAllconMatriculas() {
 
 		ArrayList<Alumno> alumnos = new ArrayList();
+		MatriculaModelo matriculaModelo= new MatriculaModelo();
 
 		try {
 			PreparedStatement pst = super.conexion.prepareStatement("select* from alumnos");
@@ -141,16 +142,19 @@ public class AlumnoModelo extends Conector {
 			while (rs.next()) {
 
 				Alumno alumno = new Alumno();
+				
 				alumno.setId(rs.getInt("id"));
 				alumno.setDni(rs.getString("dni"));
 				alumno.setNombre(rs.getString("nombre"));
 				alumno.setEmail(rs.getString("email"));
-				ArrayList<Alumno>matriculas
+				
+				
+				ArrayList<Matricula>matriculas= matriculaModelo.getMatriculasConAsignatura(alumno);
 				alumno.setMatriculas(matriculas);
 				
 				alumnos.add(alumno);
 
-				return alumnos;
+			
 
 			}
 
@@ -159,7 +163,7 @@ public class AlumnoModelo extends Conector {
 			e.printStackTrace();
 		}
 
-		return null;
+		return alumnos;
 
 	}
 

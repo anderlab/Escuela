@@ -9,6 +9,7 @@ import modelo.Asignatura;
 import modelo.AsignaturaModelo;
 import modelo.Matricula;
 import modelo.MatriculaModelo;
+import vista.AlumnoVista;
 import vista.MatriculaVista;
 
 public class MainPruebas {
@@ -16,11 +17,13 @@ public class MainPruebas {
 	public static void main(String[] args) {
 		
 
+//		
+//		MatriculaVista  mv= new MatriculaVista();
+//		mv.menuMatricula();
+//	
 		
-		MatriculaVista  mv= new MatriculaVista();
-		mv.menuMatricula();
-	
-		
+		AlumnoVista alumnoVista = new AlumnoVista();
+		alumnoVista.menuAlumno();
 	}
 
 }

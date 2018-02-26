@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import modelo.Alumno;
 import modelo.AlumnoModelo;
+import modelo.Matricula;
 
 public class AlumnoVista {
 	
@@ -48,8 +49,24 @@ private void mostrarAlumnosConAsignaturas(ArrayList<Alumno> alumnos) {
 	}
 
 private void mostrarAlumnoConAsignatura(Alumno alumno) {
-	System.out.println("Nombre alumno:"+ alumno.getNombre());
-	System.out.println("Asignaturas: "+ alumno.getMatricula().getAsignatura().getNombre());
+	//Muestra los datos del alumno
+	System.out.println("Nombre alumno: "+ alumno.getNombre()+" Dni alumno: "+alumno.getDni());
+	System.out.println("Asignaturas: ");
+	//Muestra todas sus asignaturas
+	ArrayList <Matricula> matriculas= alumno.getMatriculas();
+	Iterator <Matricula> i= matriculas.iterator();
+	
+	while(i.hasNext()){
+		Matricula matricula= i.next();
+		System.out.println(
+				matricula.getFecha()+" "+
+				matricula.getAsignatura().getNombre()+" "+
+						matricula.getAsignatura().getHoras());
+		
+	}
+	
+	System.out.println(".............");
+	
 	
 }
 

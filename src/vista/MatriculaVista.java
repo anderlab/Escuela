@@ -56,8 +56,11 @@ public class MatriculaVista {
 			AsignaturaModelo asignaturaModelo = new AsignaturaModelo();
 			
 			Matricula matricula= i.next();
-			Alumno alumno= alumnoModelo.selectPorId(matricula.getIdAlumno());
-			Asignatura asignatura= asignaturaModelo.selectAsignaturaPorId(matricula.getIdAsignatura());
+//			Alumno alumno= alumnoModelo.selectPorId(matricula.getIdAlumno());
+			Alumno alumno= alumnoModelo.selectPorId(matricula.getAlumno().getId());
+//			Asignatura asignatura= asignaturaModelo.selectAsignaturaPorId(matricula.getIdAsignatura());
+			
+			Asignatura asignatura= asignaturaModelo.selectAsignaturaPorId(matricula.getAsignatura().getId());
 			
 			
 		
