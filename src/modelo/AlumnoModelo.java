@@ -12,7 +12,7 @@ public class AlumnoModelo extends Conector {
 		ArrayList<Alumno> alumnos = new ArrayList();
 
 		try {
-			PreparedStatement pst = super.conexion.prepareStatement("select* from alumnos, provincias");
+			PreparedStatement pst = super.conexion.prepareStatement("select * from alumnos, provincias");
 			ResultSet rs = pst.executeQuery();
 
 			while (rs.next()) {
@@ -176,7 +176,7 @@ public class AlumnoModelo extends Conector {
 	public ArrayList<Alumno> selectAllconMatriculas() {
 
 		ArrayList<Alumno> alumnos = new ArrayList();
-		MatriculaModelo matriculaModelo= new MatriculaModelo();
+		MatriculaModelo matriculaModelo = new MatriculaModelo();
 
 		try {
 			PreparedStatement pst = super.conexion.prepareStatement("select* from alumnos");
@@ -185,19 +185,16 @@ public class AlumnoModelo extends Conector {
 			while (rs.next()) {
 
 				Alumno alumno = new Alumno();
-				
+
 				alumno.setId(rs.getInt("id"));
 				alumno.setDni(rs.getString("dni"));
 				alumno.setNombre(rs.getString("nombre"));
 				alumno.setEmail(rs.getString("email"));
-				
-				
-				ArrayList<Matricula>matriculas= matriculaModelo.getMatriculasConAsignatura(alumno);
-				alumno.setMatriculas(matriculas);
-				
-				alumnos.add(alumno);
 
-			
+				ArrayList<Matricula> matriculas = matriculaModelo.getMatriculasConAsignatura(alumno);
+				alumno.setMatriculas(matriculas);
+
+				alumnos.add(alumno);
 
 			}
 
