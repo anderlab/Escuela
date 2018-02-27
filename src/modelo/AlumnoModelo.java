@@ -12,6 +12,42 @@ public class AlumnoModelo extends Conector {
 		ArrayList<Alumno> alumnos = new ArrayList();
 
 		try {
+			PreparedStatement pst = super.conexion.prepareStatement("select* from alumnos, provincias");
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next()) {
+
+				Alumno alumno = new Alumno();
+				alumno.setId(rs.getInt("alumnos.id"));
+				alumno.setDni(rs.getString("alumnos.dni"));
+				alumno.setNombre(rs.getString("alumnos.nombre"));
+				alumno.setEmail(rs.getString("alumnos.email"));
+				
+				
+				Provincia provincia=new Provincia();
+				provincia.setId(rs.getInt("provincias.id"));
+				provincia.setNombre(rs.getString("provincias.nombre"));
+				
+				
+				alumno.setProvincia(provincia);
+
+				alumnos.add(alumno);
+
+			}
+			return alumnos;
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+	public ArrayList<Alumno> selectAll2() {
+
+		ArrayList<Alumno> alumnos = new ArrayList();
+
+		try {
 			PreparedStatement pst = super.conexion.prepareStatement("select* from alumnos");
 			ResultSet rs = pst.executeQuery();
 
@@ -22,12 +58,19 @@ public class AlumnoModelo extends Conector {
 				alumno.setDni(rs.getString("dni"));
 				alumno.setNombre(rs.getString("nombre"));
 				alumno.setEmail(rs.getString("email"));
+				
+				
+			
+				
+				ProvinciaModelo provinciaModelo= new ProvinciaModelo();
+				Provincia provincia=provinciaModelo.get(rs.getInt("id_provincia"));
+				alumno.setProvincia(provincia);
 
 				alumnos.add(alumno);
 
-				return alumnos;
 
 			}
+			return alumnos;
 
 		} catch (SQLException e) {
 

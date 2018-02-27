@@ -8,13 +8,18 @@ public class Alumno {
 	private String dni;
 	private String nombre;
 	private String email;
+	private Provincia provincia;
 
 	private ArrayList<Matricula> matriculas;
 
 	// getters and setters
 
-	public int getId() {
-		return id;
+	public Provincia getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(Provincia provincia) {
+		this.provincia = provincia;
 	}
 
 	public ArrayList<Matricula> getMatriculas() {
@@ -23,6 +28,10 @@ public class Alumno {
 
 	public void setMatriculas(ArrayList<Matricula> matriculas) {
 		this.matriculas = matriculas;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public void setId(int id) {

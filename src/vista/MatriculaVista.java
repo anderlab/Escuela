@@ -41,63 +41,55 @@ public class MatriculaVista {
 	}
 
 	private void listar() {
-		
-		
-		
-	MatriculaModelo matriculaModelo = new MatriculaModelo();
-		
-		ArrayList <Matricula> matriculas = matriculaModelo.selectAll();
-		
-		
-		Iterator <Matricula> i = matriculas.iterator();
-		
-		while(i.hasNext()){
+
+		MatriculaModelo matriculaModelo = new MatriculaModelo();
+
+		ArrayList<Matricula> matriculas = matriculaModelo.selectAll();
+
+		Iterator<Matricula> i = matriculas.iterator();
+
+		while (i.hasNext()) {
 			AlumnoModelo alumnoModelo = new AlumnoModelo();
 			AsignaturaModelo asignaturaModelo = new AsignaturaModelo();
-			
-			Matricula matricula= i.next();
-//			Alumno alumno= alumnoModelo.selectPorId(matricula.getIdAlumno());
-			Alumno alumno= alumnoModelo.selectPorId(matricula.getAlumno().getId());
-//			Asignatura asignatura= asignaturaModelo.selectAsignaturaPorId(matricula.getIdAsignatura());
-			
-			Asignatura asignatura= asignaturaModelo.selectAsignaturaPorId(matricula.getAsignatura().getId());
-			
-			
-		
+
+			Matricula matricula = i.next();
+			// Alumno alumno= alumnoModelo.selectPorId(matricula.getIdAlumno());
+			Alumno alumno = alumnoModelo.selectPorId(matricula.getAlumno().getId());
+			// Asignatura asignatura=
+			// asignaturaModelo.selectAsignaturaPorId(matricula.getIdAsignatura());
+
+			Asignatura asignatura = asignaturaModelo.selectAsignaturaPorId(matricula.getAsignatura().getId());
+
 			mostrarMatriculaAsignaturaAlumno(alumno, asignatura, matricula);
-			
+
 		}
-		
-		
-		
+
 	}
 
 	private void mostrarMatriculaAsignaturaAlumno(Alumno alumno, Asignatura asignatura, Matricula matricula) {
-		System.out.println("Nombre del alumno: "+alumno.getNombre());
-		System.out.println("DNI del alumno: "+alumno.getDni());
-		System.out.println( "Nombre de asignatura: "+asignatura.getNombre());
-		System.out.println("Horas de la asginatura: "+asignatura.getHoras());
-		System.out.println("Fecha matriculacion : "+matricula.getFecha()+"\n");
-		
+		System.out.println("Nombre del alumno: " + alumno.getNombre());
+		System.out.println("DNI del alumno: " + alumno.getDni());
+		System.out.println("Nombre de asignatura: " + asignatura.getNombre());
+		System.out.println("Horas de la asginatura: " + asignatura.getHoras());
+		System.out.println("Fecha matriculacion : " + matricula.getFecha() + "\n");
+
 	}
-	
-	
-	
-	
-//	private static Asignatura getAsignatura(Matricula matricula) {
-//
-//		AsignaturaModelo asignaturaModelo = new AsignaturaModelo();
-//		Asignatura asignatura = asignaturaModelo.selectAsignaturaPorId(matricula.getIdAsignatura());
-//
-//		return asignatura;
-//	}
-//
-//	private static Alumno getAlumno(Matricula matricula) {
-//
-//		AlumnoModelo alumnoModelo = new AlumnoModelo();
-//		Alumno alumno = alumnoModelo.selectPorId(matricula.getIdAlumno());
-//
-//		return alumno;
-//	}
+
+	// private static Asignatura getAsignatura(Matricula matricula) {
+	//
+	// AsignaturaModelo asignaturaModelo = new AsignaturaModelo();
+	// Asignatura asignatura =
+	// asignaturaModelo.selectAsignaturaPorId(matricula.getIdAsignatura());
+	//
+	// return asignatura;
+	// }
+	//
+	// private static Alumno getAlumno(Matricula matricula) {
+	//
+	// AlumnoModelo alumnoModelo = new AlumnoModelo();
+	// Alumno alumno = alumnoModelo.selectPorId(matricula.getIdAlumno());
+	//
+	// return alumno;
+	// }
 
 }
